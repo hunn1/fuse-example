@@ -46,7 +46,11 @@ func main() {
 					fmt.Printf("读取http数据失败:%v", err)
 					return
 				}
-				fmt.Printf("接收到到值:%v\n", string(nByte))
+				if len(nByte) == 0 {
+					fmt.Printf("未接收到返回值, 值:%v\n", string(nByte))
+				} else {
+					fmt.Printf("收到返回值, 值:%v\n", string(nByte))
+				}
 			}(i)
 		}
 		wg.Wait()
